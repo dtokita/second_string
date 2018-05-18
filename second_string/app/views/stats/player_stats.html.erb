@@ -1,0 +1,166 @@
+<!-- Navigation Bar Start -->
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Brand</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a href="/">Welcome</a></li>
+        <li><a href="/roster/index">Roster</a></li>
+        <li class="active dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Statistics<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Player Stats</a></li>
+            <li><a href="#">Team Stats</a></li>
+            <li><a href="#">Team Leaders</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Data Entry</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Direct Query</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<!-- Nagivation Bar End -->
+
+<!-- Jumbotron Start -->
+<div class="container">
+  <% if @player == true %>
+    <h1>Career Stats for <%= @player_name.name %></h1>
+    <h3>Batting</h3>
+    <% if @player_stats.sum(:pas) != 0 %>
+    <table class="table">
+      <tr>
+        <th>Game ID</th>
+        <th>AB</th>
+        <th>R</th>
+        <th>H</th>
+        <th>BB</th>
+        <th>RBI</th>
+        <th>SB</th>
+        <th>CS</th>
+        <th>BA</th>
+        <th>OBP</th>
+        <th>SLG</th>
+        <th>1B</th>
+        <th>2B</th>
+        <th>3B</th>
+        <th>HR</th>
+        <th>SO</th>
+      </tr>
+      <% @player_stats.each_with_index do |stats, index| %>
+        <tr>
+          <td><%= stats.game_id %></td>
+          <td><%= stats.abs %></td>
+          <td><%= stats.runs %></td>
+          <td><%= stats.hits %></td>
+          <td><%= stats.walks %></td>
+          <td><%= stats.rbis %></td>
+          <td><%= stats.stolen_bases %></td>
+          <td><%= stats.caught_stealing %></td>
+          <td><%= '%.3f' % (stats.hits.to_f / stats.abs.to_f) %></td>
+          <td><%= '%.3f' % ((stats.hits + stats.walks + stats.hbps).to_f / stats.pas.to_f) %></td>
+          <td><%= '%.3f' % (((stats.singles) + (stats.doubles * 2) + (stats.triples * 3) + (stats.homeruns * 4)).to_f / stats.abs.to_f ) %></td>
+          <td><%= stats.singles %></td>
+          <td><%= stats.doubles %></td>
+          <td><%= stats.triples %></td>
+          <td><%= stats.homeruns %></td>
+          <td><%= stats.strikeouts %></td>
+        </tr>
+      <% end %>
+      <tr>
+        <th>Totals</th>
+        <td><%= @player_stats.sum(:abs) %></td>
+        <td><%= @player_stats.sum(:runs) %></td>
+        <td><%= @player_stats.sum(:hits) %></td>
+        <td><%= @player_stats.sum(:walks) %></td>
+        <td><%= @player_stats.sum(:rbis) %></td>
+        <td><%= @player_stats.sum(:stolen_bases) %></td>
+        <td><%= @player_stats.sum(:caught_stealing) %></td>
+        <td><%= '%.3f' % (@player_stats.sum(:hits).to_f / @player_stats.sum(:abs).to_f) %></td>
+        <td><%= '%.3f' % ((@player_stats.sum(:hits) + @player_stats.sum(:walks) + @player_stats.sum(:hbps)).to_f / @player_stats.sum(:pas).to_f) %></td>
+        <td><%= '%.3f' % (((@player_stats.sum(:singles)) + (@player_stats.sum(:doubles) * 2) + (@player_stats.sum(:triples) * 3) + (@player_stats.sum(:homeruns) * 4)).to_f / @player_stats.sum(:abs).to_f) %></td>
+        <td><%= @player_stats.sum(:singles) %></td>
+        <td><%= @player_stats.sum(:doubles) %></td>
+        <td><%= @player_stats.sum(:triples) %></td>
+        <td><%= @player_stats.sum(:homeruns) %></td>
+        <td><%= @player_stats.sum(:strikeouts) %></td>
+      </tr>
+    </table>
+    <% else %>
+    <h5>No hitting data.</h5>
+    <% end %>
+    <h3>Pitching</h3>
+    <% if @player_stats.sum(:innings) != 0 %>
+    <table class="table">
+      <tr>
+        <th>Game ID</th>
+        <th>IP</th>
+        <th>H</th>
+        <th>ER</th>
+        <th>BB</th>
+        <th>SO</th>
+        <th>ERA</th>
+        <th>WHIP</th>
+        <th>WIN</th>
+        <th>LOSS</th>
+        <th>SAVE</th>
+      </tr>
+      <% @player_stats.each_with_index do |stats, index| %>
+        <tr>
+          <td><%= stats.game_id %></td>
+          <td><%= '%.1f' % stats.innings %></td>
+          <td><%= stats.hits_allowed %></td>
+          <td><%= stats.ers %></td>
+          <td><%= stats.walks_allowed %></td>
+          <td><%= stats.pitching_strikeouts %></td>
+          <td><%= '%.2f' % (9 * stats.ers / stats.innings) %></td>
+          <td><%= '%.2f' % ((stats.walks_allowed + stats.hits_allowed) / stats.innings) %></td>
+          <td><%= stats.win %></td>
+          <td><%= stats.loss %></td>
+          <td><%= stats.save_game %></td>
+        </tr>
+      <% end %>
+      <tr>
+        <th>Totals</th>
+        <td><%= '%.1f' % @player_stats.sum(:innings) %></td>
+        <td><%= @player_stats.sum(:hits_allowed) %></td>
+        <td><%= @player_stats.sum(:ers) %> </td>
+        <td><%= @player_stats.sum(:walks_allowed) %></td>
+        <td><%= @player_stats.sum(:pitching_strikeouts) %></td>
+        <td><%= '%.2f' % ((9 * @player_stats.sum(:ers) / @player_stats.sum(:innings))) %></td>
+        <td><%= '%.2f' % (((@player_stats.sum(:walks_allowed) + @player_stats.sum(:hits_allowed)) / @player_stats.sum(:innings) )) %></td>
+        <td><%= @player_stats.sum(:win) %></td>
+        <td><%= @player_stats.sum(:loss) %></td>
+        <td><%= @player_stats.sum(:save_game) %></td>
+      </tr>
+    </table>
+    <% else %>
+    <h5>No pitching data.</h5>
+    <% end %>
+  <% else %>
+    <div class="jumbotron">
+      <h1>Search for Player...</h1><br />
+      <select class="player_dropdown" name="player[id]">
+        <%= Player.all.order(:name).each do |player| %>
+          <option value="<%= player.id %>"><%= player.name %></option>
+        <% end %>
+      </select>
+      <a class="btn btn-primary btn-sm player_search_button" href="#">Search</a> 
+    </div>
+  <% end %>
+</div>
+<!-- Jumbotron End -->
+

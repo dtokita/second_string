@@ -1,0 +1,71 @@
+<!-- Navigation Bar Start -->
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Brand</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a href="/">Welcome</a></li>
+        <li><a href="/roster/index">Roster</a></li>
+        <li class="active dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Statistics<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Player Stats</a></li>
+            <li><a href="#">Team Stats</a></li>
+            <li><a href="#">Team Leaders</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Data Entry</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Direct Query</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<!-- Nagivation Bar End -->
+
+<div class="container">
+<h1>New Statline Entry</h1>
+  <%= form_for :stats do |stats| %>
+    Player ID: <%= stats.number_field :player_id %><br />
+    Game ID: <%= stats.number_field :game_id %><br />
+    Plate Appearances: <%= stats.number_field :pas %><br />
+    At-Bats: <%= stats.number_field :abs %><br />
+    Hits: <%= stats.number_field :hits %><br />
+    Runs: <%= stats.number_field :runs %><br />
+    RBIs: <%= stats.number_field :rbis %><br />
+    Singles: <%= stats.number_field :singles %><br />
+    Doubles: <%= stats.number_field :doubles %><br />
+    Triples: <%= stats.number_field :triples %><br />
+    Homeruns: <%= stats.number_field :homeruns %><br />
+    Stolen Bases: <%= stats.number_field :stolen_bases %><br />
+    Caught Stealing: <%= stats.number_field :caught_stealing %><br />
+    Walks: <%= stats.number_field :walks %><br />
+    Hit-by-Pitches: <%= stats.number_field :hbps %><br />
+    GIDP: <%= stats.number_field :gidps %><br />
+    Sacrifice Bunts: <%= stats.number_field :sac_bunts %><br />
+    Sacrifice Flies: <%= stats.number_field :sac_flies %><br />
+    Strikeouts: <%= stats.number_field :strikeouts %><br /><br />
+    Walks Allowed: <%= stats.number_field :walks_allowed %><br/ >
+    Earned Runs Allowed: <%= stats.number_field :ers %><br />
+    Hits Allowed: <%= stats.number_field :hits_allowed %><br />
+    Innings Pitched: <%= stats.number_field :innings %><br />
+    Pitching Strikeouts: <%= stats.number_field :pitching_strikeouts %><br />
+    Win?: <%= stats.check_box :win %><br />
+    Save?: <%= stats.check_box :save_game %><br />
+    Loss?: <%= stats.check_box :loss %><br />
+    <%= stats.submit %>
+  <% end %>
+</div>
+

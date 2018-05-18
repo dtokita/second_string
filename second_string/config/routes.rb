@@ -1,4 +1,23 @@
 Rails.application.routes.draw do
+  get 'welcome/index'
+  root 'welcome#index'
+
+  get 'roster/index'
+
+  get 'data_entry/index'
+  get 'data_entry/create_player'
+  get 'data_entry/edit_player'
+  get 'data_entry/create_game'
+  get 'data_entry/create_statline'
+  post 'data_entry/create_player', to: 'data_entry#create_player_post'
+  post 'data_entry/edit_player', to: 'data_entry#edit_player_post'
+  post 'data_entry/create_game', to: 'data_entry#create_game_post'
+  post 'data_entry/create_statline', to: 'data_entry#create_statline_post'
+
+  get 'stats/index'
+  get 'stats/player_stats/:player_id', to: 'stats#player_stats'
+  get 'stats/player_stats'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

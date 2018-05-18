@@ -13,4 +13,10 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require bootstrap-sprockets
 //= require_tree .
+
+$(document).on('click', '.player_search_button', function() {
+  console.log($('.player_dropdown').val());
+  window.location.href = "/stats/player_stats/" + $('.player_dropdown').val();
+});

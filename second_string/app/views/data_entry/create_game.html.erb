@@ -1,0 +1,58 @@
+<!-- Navigation Bar Start -->
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Brand</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a href="/">Welcome</a></li>
+        <li><a href="/roster/index">Roster</a></li>
+        <li class="active dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Statistics<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Player Stats</a></li>
+            <li><a href="#">Team Stats</a></li>
+            <li><a href="#">Team Leaders</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Data Entry</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Direct Query</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<!-- Nagivation Bar End -->
+
+<div class="container">
+<h1>New Game Entry</h1>
+  <%= form_for :game do |game| %>
+    Home Team: <%= game.text_field :home_team %><br />
+    Away Team: <%= game.text_field :away_team %><br />
+    Home Runs: <%= game.number_field :home_runs %><br />
+    Away Runs: <%= game.number_field :away_runs %><br />
+    Home Hits: <%= game.number_field :home_hits %><br />
+    Away Hits: <%= game.number_field :away_hits %><br />
+    Home Errors: <%= game.number_field :home_errors %><br />
+    Away Errors: <%= game.number_field :away_errors %><br />
+    Home?: <%= game.check_box :home %><br />
+    Win?: <%= game.check_box :win %><br />
+    Playoff?: <%= game.check_box :playoff %><br />
+    Season: <%= game.text_field :season %><br />
+    Date: <%= game.date_field :date %><br />
+    Time: <%= game.time_field :time %><br />
+    <%= game.submit %>
+  <% end %>
+</div>
+

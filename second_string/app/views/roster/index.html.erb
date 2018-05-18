@@ -1,0 +1,58 @@
+<!-- Navigation Bar Start -->
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Brand</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a href="/">Welcome</a></li>
+        <li class="active"><a href="#">Roster<span class="sr-only">(current)</span></a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Statistics<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Player Stats</a></li>
+            <li><a href="#">Team Stats</a></li>
+            <li><a href="#">Team Leaders</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Data Entry</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Direct Query</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<!-- Nagivation Bar End -->
+
+<!-- Jumbotron Start -->
+<div class="container">
+  <h1>Summer 2018 Roster</h1>
+  <table class="table table-hover">
+    <tr>
+      <th>Jersey Number</th>
+			<th>Name</th>
+			<th>Bats</th>
+      <th>Throws</th>
+    </tr>
+    <% @players.each_with_index do |player, index| %>
+      <tr>
+        <td><%= player.jersey_number %></td>
+				<td><%= player.name %></td>
+        <td><%= player.bats %></td>
+        <td><%= player.throws %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+<!-- Jumbotron End -->
