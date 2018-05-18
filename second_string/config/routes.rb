@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   get 'stats/index'
   get 'stats/player_stats/:player_id', to: 'stats#player_stats'
   get 'stats/player_stats'
+  get 'stats/team_stats'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

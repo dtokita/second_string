@@ -37,13 +37,29 @@
 
 <!-- Jumbotron Start -->
 <div class="container">
-  <div class="jumbotron">
-    <h1>Statistics Home Page</h1><br />
-    <p><a class="btn btn-primary btn-lg" href="#" role="button">Player Statistics</a>
-    <a class="btn btn-primary btn-lg" href="#" role="button">Team Statistics</a>
-    <a class="btn btn-primary btn-lg" href="#" role="button">Team Leaders</a>
-    <a class="btn btn-primary btn-lg" href="#" role="button">Direct Query</a></p>
-  </div>
+  <% @games.each_with_index do |game, index| %>
+    <h3>Game #<%= game.id %>, <%= game.away_team %> @ <%= game.home_team %> on <%= game.date %>, <%= game.season %></h3>
+    <table class="table">
+      <tr>
+        <th>&nbsp;</th>
+        <th>Runs</th>
+        <th>Hits</th>
+        <th>Errors</th>
+      </tr>
+      <tr>
+        <th><%= game.away_team %></th>
+        <td><%= game.away_runs %></td>
+        <td><%= game.away_hits %></td>
+        <td><%= game.away_errors %></td>
+      </tr>
+      <tr>
+        <th><%= game.home_team %></th>
+        <td><%= game.home_runs %></td>
+        <td><%= game.home_hits %></td>
+        <td><%= game.home_errors %></td>
+      </tr>
+    </table>
+  <% end %>
 </div>
 <!-- Jumbotron End -->
 

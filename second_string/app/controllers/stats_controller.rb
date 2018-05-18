@@ -11,4 +11,8 @@ class StatsController < ApplicationController
       @player_stats = Statline.where("player_id = '#{params[:player_id]}'").order(:game_id)
     end
   end
+
+  def team_stats
+    @games = Game.all 
+  end
 end
