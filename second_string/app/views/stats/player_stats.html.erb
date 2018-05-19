@@ -61,6 +61,8 @@
         <th>SO</th>
       </tr>
       <% @player_stats.each_with_index do |stats, index| %>
+        <% if stats.total == true %>
+        <% else %>
         <tr>
           <td><%= stats.game_id %></td>
           <td><%= stats.abs %></td>
@@ -79,6 +81,7 @@
           <td><%= stats.homeruns %></td>
           <td><%= stats.strikeouts %></td>
         </tr>
+        <% end %>
       <% end %>
       <tr>
         <th>Totals</th>
@@ -119,6 +122,8 @@
         <th>SAVE</th>
       </tr>
       <% @player_stats.each_with_index do |stats, index| %>
+        <% if stats.total == true %>
+        <% else %>
         <tr>
           <td><%= stats.game_id %></td>
           <td><%= '%.1f' % stats.innings %></td>
@@ -132,6 +137,7 @@
           <td><%= stats.loss %></td>
           <td><%= stats.save_game %></td>
         </tr>
+        <% end %>
       <% end %>
       <tr>
         <th>Totals</th>
