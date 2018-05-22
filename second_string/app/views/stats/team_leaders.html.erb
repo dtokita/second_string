@@ -46,6 +46,7 @@
         <% if @hit_leaders[i] != nil %>
         <tr>
           <th><%= Player.find(@hit_totals.key(@hit_leaders[i])).name %></th>
+          <% @hit_totals.delete(@hit_totals.key(@hit_leaders[i])) %>
           <td><%= @hit_leaders[i] %></td>
         </tr>
         <% end %>
@@ -58,6 +59,7 @@
         <% if @avg_leaders[i] != nil %>
         <tr>
           <th><%= Player.find(@batting_avg_totals.key(@avg_leaders[i])).name %></th>
+          <% @batting_avg_totals.delete(@batting_avg_totals.key(@avg_leaders[i])) %>
           <td><%= '%.3f' % @avg_leaders[i] %></td>
         </tr>
         <% end %>
@@ -71,6 +73,7 @@
         <% if @run_leaders[i] != nil %>
         <tr>
           <th><%= Player.find(@run_totals.key(@run_leaders[i])).name %></th>
+          <% @run_totals.delete(@run_totals.key(@run_leaders[i])) %>
           <td><%= @run_leaders[i] %></td>
         </tr>
         <% end %>
@@ -84,6 +87,7 @@
         <% if @rbi_leaders[i] != nil %>
         <tr>
           <th><%= Player.find(@rbi_totals.key(@rbi_leaders[i])).name %></th>
+          <% @rbi_totals.delete(@rbi_totals.key(@rbi_leaders[i])) %>
           <td><%= @rbi_leaders[i] %></td>
         </tr>
         <% end %>
@@ -97,6 +101,7 @@
         <% if @single_leaders[i] != nil %>
         <tr>
           <th><%= Player.find(@single_totals.key(@single_leaders[i])).name %></th>
+          <% @single_totals.delete(@single_totals.key(@single_leaders[i])) %>
           <td><%= @single_leaders[i] %></td>
         </tr>
         <% end %>
@@ -110,6 +115,7 @@
         <% if @double_leaders[i] != nil %>
         <tr>
           <th><%= Player.find(@double_totals.key(@double_leaders[i])).name %></th>
+          <% @double_totals.delete(@double_totals.key(@double_leaders[i])) %>
           <td><%= @double_leaders[i] %></td>
         </tr>
         <% end %>
@@ -123,6 +129,7 @@
         <% if @triple_leaders[i] != nil %>
         <tr>
           <th><%= Player.find(@triple_totals.key(@triple_leaders[i])).name %></th>
+          <% @triple_totals.delete(@triple_totals.key(@triple_leaders[i])) %>
           <td><%= @triple_leaders[i] %></td>
         </tr>
         <% end %>
@@ -136,6 +143,7 @@
         <% if @homerun_leaders[i] != nil %>
         <tr>
           <th><%= Player.find(@homerun_totals.key(@homerun_leaders[i])).name %></th>
+          <% @homerun_totals.delete(@homerun_totals.key(@homerun_leaders[i])) %>
           <td><%= @homerun_leaders[i] %></td>
         </tr>
         <% end %>
@@ -149,6 +157,7 @@
         <% if @stolen_base_leaders[i] != nil %>
         <tr>
           <th><%= Player.find(@stolen_base_totals.key(@stolen_base_leaders[i])).name %></th>
+          <% @stolen_base_totals.delete(@stolen_base_totals.key(@stolen_base_leaders[i])) %>
           <td><%= @stolen_base_leaders[i] %></td>
         </tr>
         <% end %>
@@ -162,6 +171,7 @@
         <% if @strikeout_leaders[i] != nil %>
         <tr>
           <th><%= Player.find(@strikeout_totals.key(@strikeout_leaders[i])).name %></th>
+          <% @strikeout_totals.delete(@strikeout_totals.key(@strikeout_leaders[i])) %>
           <td><%= @strikeout_leaders[i] %></td>
         </tr>
         <% end %>
@@ -178,7 +188,8 @@
         <% if @inning_leaders[i] != nil %>
         <tr>
           <th><%= Player.find(@inning_totals.key(@inning_leaders[i])).name %></th>
-          <td><%= @inning_leaders[i] %></td>
+          <% @inning_totals.delete(@inning_totals.key(@inning_leaders[i])) %>
+          <td><%= '%.1f' % @inning_leaders[i] %></td>
         </tr>
         <% end %>
       <% end %>
@@ -191,6 +202,7 @@
         <% if @hits_allowed_leaders[i] != nil %>
         <tr>
           <th><%= Player.find(@hits_allowed_totals.key(@hits_allowed_leaders[i])).name %></th>
+          <% @hits_allowed_totals.delete(@hits_allowed_totals.key(@hits_allowed_leaders[i])) %>
           <td><%= @hits_allowed_leaders[i] %></td>
         </tr>
         <% end %>
@@ -204,6 +216,7 @@
         <% if @walks_allowed_leaders[i] != nil %>
         <tr>
           <th><%= Player.find(@walks_allowed_totals.key(@walks_allowed_leaders[i])).name %></th>
+          <% @walks_allowed_totals.delete(@walks_allowed_totals.key(@walks_allowed_leaders[i])) %>
           <td><%= @walks_allowed_leaders[i] %></td>
         </tr>
         <% end %>
@@ -217,6 +230,7 @@
         <% if @er_leaders[i] != nil %>
         <tr>
           <th><%= Player.find(@er_totals.key(@er_leaders[i])).name %></th>
+          <% @er_totals.delete(@er_totals.key(@er_leaders[i])) %>
           <td><%= @er_leaders[i] %></td>
         </tr>
         <% end %>
@@ -230,6 +244,7 @@
         <% if @pitching_strikeout_leaders[i] != nil %>
         <tr>
           <th><%= Player.find(@pitching_strikeout_totals.key(@pitching_strikeout_leaders[i])).name %></th>
+          <% @pitching_strikeout_totals.delete(@pitching_strikeout_totals.key(@pitching_strikeout_leaders[i])) %>
           <td><%= @pitching_strikeout_leaders[i] %></td>
         </tr>
         <% end %>
@@ -243,6 +258,7 @@
         <% if @win_leaders[i] != nil %>
         <tr>
           <th><%= Player.find(@win_total.key(@win_leaders[i])).name %></th>
+          <% @win_total.delete(@win_total.key(@win_leaders[i])) %>
           <td><%= @win_leaders[i] %></td>
         </tr>
         <% end %>
@@ -256,6 +272,7 @@
         <% if @save_leaders[i] != nil %>
         <tr>
           <th><%= Player.find(@save_total.key(@save_leaders[i])).name %></th>
+          <% @save_total.delete(@save_total.key(@save_leaders[i])) %>
           <td><%= @save_leaders[i] %></td>
         </tr>
         <% end %>

@@ -38,8 +38,8 @@
 <div class="container">
 <h1>New Statline Entry</h1>
   <%= form_for :stats do |stats| %>
-    Player ID: <%= stats.number_field :player_id %><br />
-    Game ID: <%= stats.number_field :game_id %><br />
+    Player Name: <%= select_tag 'stats[player_id]', options_for_select(Player.all.collect{ |player| [player.name, player.id] }) %><br />
+    Game: <%= select_tag 'stats[game_id]', options_for_select(Game.all.collect{ |game| [game.away_team + ' @ ' + game.home_team, game.id] }) %><br />
     Plate Appearances: <%= stats.number_field :pas %><br />
     At-Bats: <%= stats.number_field :abs %><br />
     Hits: <%= stats.number_field :hits %><br />

@@ -59,7 +59,11 @@ class StatsController < ApplicationController
       @saves = Statline.where("player_id = #{id}").sum(:save_game)
 
       @hit_totals[id] = @hits
-      @batting_avg_totals[id] = @hits.to_f / @at_bats.to_f
+     
+      if @at_bats.to_f != 0.0
+        @batting_avg_totals[id] = @hits.to_f / @at_bats.to_f
+      end
+ 
       @run_totals[id] = @runs
       @rbi_totals[id] = @rbis
       @single_totals[id] = @singles
