@@ -9,7 +9,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/">Brand</a>
+      <a class="navbar-brand" href="/"><%= image_tag("SecondString.PNG", height: '25', width: '30') %></a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -35,31 +35,16 @@
 </nav>
 <!-- Nagivation Bar End -->
 
-<!-- Jumbotron Start -->
 <div class="container">
-  <% @games.each_with_index do |game, index| %>
-    <h3>Game #<%= game.id %>, <%= game.away_team %> @ <%= game.home_team %> on <%= game.date %>, <%= game.season %></h3>
-    <table class="table">
-      <tr>
-        <th>&nbsp;</th>
-        <th>Runs</th>
-        <th>Hits</th>
-        <th>Errors</th>
-      </tr>
-      <tr>
-        <th><%= game.away_team %></th>
-        <td><%= game.away_runs %></td>
-        <td><%= game.away_hits %></td>
-        <td><%= game.away_errors %></td>
-      </tr>
-      <tr>
-        <th><%= game.home_team %></th>
-        <td><%= game.home_runs %></td>
-        <td><%= game.home_hits %></td>
-        <td><%= game.home_errors %></td>
-      </tr>
-    </table>
+<h1>New Player Entry</h1>
+  <%= form_for :player do |player| %>
+    Name: <%= player.text_field :name %><br />
+    Jersey Number: <%= player.number_field :jersey_number %><br />
+    Height: <%= player.number_field :height %><br />
+    Weight: <%= player.number_field :weight %><br />
+    Throws: <%= player.text_field :throws %><br />
+    Bats: <%= player.text_field :bats %><br />
+    <%= player.submit %>
   <% end %>
 </div>
-<!-- Jumbotron End -->
 

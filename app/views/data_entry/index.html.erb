@@ -9,7 +9,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/">Brand</a>
+      <a class="navbar-brand" href="/"><%= image_tag("SecondString.PNG", height: '25', width: '30') %></a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -35,16 +35,15 @@
 </nav>
 <!-- Nagivation Bar End -->
 
+<!-- Jumbotron Start -->
 <div class="container">
-<h1>New Player Entry</h1>
-  <%= form_for :player do |player| %>
-    Name: <%= player.text_field :name %><br />
-    Jersey Number: <%= player.number_field :jersey_number %><br />
-    Height: <%= player.number_field :height %><br />
-    Weight: <%= player.number_field :weight %><br />
-    Throws: <%= player.text_field :throws %><br />
-    Bats: <%= player.text_field :bats %><br />
-    <%= player.submit %>
-  <% end %>
+  <div class="jumbotron">
+    <h1>If you are unauthorized, please navigate away</h1><br />
+    <p><a class="btn btn-primary btn-lg" href="/data_entry/create_player" role="button">Create Player</a>
+    <a class="btn btn-primary btn-lg" href="/data_entry/edit_player" role="button">Edit Player</a>
+    <a class="btn btn-primary btn-lg" href="/data_entry/create_game" role="button">Create Game</a>
+    <a class="btn btn-primary btn-lg" href="/data_entry/create_statline" role="button">Create Statline</a></p>
+  </div
 </div>
+<!-- Jumbotron End -->
 

@@ -9,15 +9,15 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/">Brand</a>
+      <a class="navbar-brand" href="#"><%= image_tag("SecondString.PNG", height: '25', width: '30') %></a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="/">Welcome</a></li>
+        <li class="active"><a href="#">Welcome<span class="sr-only">(current)</span></a></li>
         <li><a href="/roster/index">Roster</a></li>
-        <li class="active dropdown">
+        <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Statistics<span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="/stats/player_stats">Player Stats</a></li>
@@ -38,12 +38,9 @@
 <!-- Jumbotron Start -->
 <div class="container">
   <div class="jumbotron">
-    <h1>Statistics Home Page</h1><br />
-    <p><a class="btn btn-primary btn-lg" href="/stats/player_stats" role="button">Player Statistics</a>
-    <a class="btn btn-primary btn-lg" href="/stats/team_stats" role="button">Team Statistics</a>
-    <a class="btn btn-primary btn-lg" href="/stats/team_leaders" role="button">Team Leaders</a>
-    <a class="btn btn-primary btn-lg" href="#" role="button">Direct Query</a></p>
-  </div>
+    <h1>Welcome to 2nd String Baseball</h1>
+		<p>Playing in Oahu Baseball League, Summer 2018</p>
+		<p><a class="btn btn-primary btn-lg" href="/roster/index" role="button">View Roster</a></p>
+	</div>
 </div>
 <!-- Jumbotron End -->
-
